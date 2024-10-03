@@ -1,0 +1,9 @@
+
+<ul>
+    <?php foreach($cars as $car): ?>
+        <li><?= $car->marca ?> Modelo <?= $car->modelo ?> Categoria <?= $car->categoria ?> <a href="vehicle/<?= $car->id ?>">Ver mas</a>
+            <a href="delete/<?= $car->id?>" type="button">Eliminar</a>
+        </li>
+    <?php endforeach ?>
+</ul>
+<?php require_once './templates/layout/footer.phtml'?>

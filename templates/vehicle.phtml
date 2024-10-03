@@ -1,0 +1,14 @@
+<?php require_once './templates/layout/header.phtml'?>
+<h2> <?= $car->marca ?></h2>
+<h3> <?= $car->modelo ?></h3>
+<h3> <?= $car->precio ?></h3>
+<ul>
+    <li><?= $car->año ?></li>
+    <li><?= $car->puertas ?></li>
+    <li><?= $car->hp ?></li>
+    <li><?= $car->categoria ?></li>
+    
+</ul>
+
+<a href= <?= BASE_URL ?>>Volver</a>
+<?php require_once './templates/layout/footer.phtml'?>

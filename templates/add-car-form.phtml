@@ -1,0 +1,27 @@
+<?php require_once './templates/layout/header.phtml'?>
+
+<?php if($this->user) : ?>
+<form action="add" method="POST">
+    <label for="brand">Marca </label>
+    <input type="text" name="brand" id="" required>
+    <label for="model">Modelo </label>
+    <input type="text" name="model" id="" required >
+    <label for="categories">Categorias </label>
+    <select name="categories" id="" required>
+        <option value="lujo">De Lujo</option>
+        <option value="sport">Deportivo</option>
+    </select>
+    <label for="year">Año </label>
+    <input type="number" name="year" id="" required>
+    <label for="doors">Puertas </label>
+    <input type="number" name="doors" id="" required>
+    <label for="power">HP </label>
+    <input type="number" name="power" id="" required>
+    <label for="ditribuitor">Distribuidor </label>
+    <select name="distribuitor" id=""></select>
+    <label for="car-price">Precio </label>
+    <input type="number" name="car-price" id="" required>
+    <button type="submit">Enviar</button>
+</form>
+
+<?php endif ?>

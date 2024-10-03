@@ -1,0 +1,15 @@
+<?php require_once './templates/layout/header.phtml'?>
+
+<?php if($error) :?>
+    <div>
+        <h2> <?= $error ?> </h2>
+    </div>
+<?php endif ?>
+<form action="login" method="POST">
+    <label for="username"> Usuario </label>
+    <input type="text" name="username" id="" required>
+    <label for="password"> Contraseña </label>
+    <input type="password" name="password" id="" required>
+    <button type="sumbit">Iniciar Sesion</button>
+</form>
+<?php require_once './templates/layout/footer.phtml'?>

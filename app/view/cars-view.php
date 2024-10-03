@@ -1,0 +1,18 @@
+<?php
+
+class CarsView{
+    private $user = null;
+    public function showCars($cars){
+        $count = count($cars);
+        require_once './templates/add-car-form.phtml';
+        require_once './templates/cars-list.phtml';
+    }
+
+    public function showError($error = null){
+        require_once './templates/error.phtml';
+    }
+
+    public function showCar($car){
+        require_once './templates/vehicle.phtml';
+    }
+}
