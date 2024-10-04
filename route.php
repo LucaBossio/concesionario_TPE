@@ -15,25 +15,25 @@ if (!empty($_GET['action'])) {
 }
 
 $params = explode("/", $action);
-
 switch($params[0]){
     case 'home':
-        
-        $controller = new CarsController();
+        sessionAuthMiddleware($res);
+        $controller = new CarsController($res);
         $controller->showCars();
     break;
     case 'vehicle':
-        $controller = new CarsController();
+        sessionAuthMiddleware($res);
+        $controller = new CarsController($res);
         $controller->showCar($params[1]);
     break;
     case 'add':
         sessionAuthMiddleware($res);
-        $controller = new CarsController();
+        $controller = new CarsController($res);
         $controller->addCar();
     break;
     case 'delete':
         sessionAuthMiddleware($res);
-        $controller = new CarsController();
+        $controller = new CarsController($res);
         $controller->deleteCar($params[1]);
     break;
     case 'log':
@@ -47,9 +47,9 @@ switch($params[0]){
     case 'logout':
         $controller = new AuthController();
         $controller->logout();
-
+    break;
     default:
-        $controller = new CarsController();
+        $controller = new CarsController($res);
         $controller->showError('Error 404');
     break;
 }

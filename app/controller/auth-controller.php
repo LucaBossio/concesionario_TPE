@@ -15,12 +15,11 @@ class AuthController{
     public function showLogin(){
         $this->view->showLogin();
     }
+
+
     public function login(){
-        if(!isset($_POST['username']) || empty($_POST['username'])){
-            $this->view->showError('Usuario invalido');
-        }
-        if(!isset($_POST['password']) || empty($_POST['password'])){
-            $this->view->showError('Contraseña invalida');
+        if((!isset($_POST['username']) || empty($_POST['username'])) || (!isset($_POST['password']) || empty($_POST['password']))){
+            $this->view->showError('Usuario y/o contraseña invalidos');
         }
 
         $username = $_POST['username'];
@@ -30,6 +29,8 @@ class AuthController{
         if($user && password_verify($password, $user->contrasenia)){
             session_start();
             $_SESSION['user'] = $user->usuario;
+            $_SESSION['id'] = $user->id;
+            $_SESSION['rol'] = 'admin';
 
             header('Location:' . BASE_URL);
         }else{

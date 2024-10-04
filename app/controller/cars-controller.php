@@ -8,10 +8,10 @@ class CarsController{
     private $model;
     private $view;
 
-    public function __construct()
+    public function __construct($res)
     {
         $this->model = new CarsModel();
-        $this->view = new CarsView();
+        $this->view = new CarsView($res->user);
     }
 
     public function showCars(){

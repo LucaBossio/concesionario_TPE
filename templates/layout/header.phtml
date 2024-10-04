@@ -23,13 +23,15 @@
                 </div>
                 <div>
                     <ul>
-                        <?php if(!$this->user):?>
-                        <li><a href= <?= BASE_URL . 'log' ?>>Iniciar sesion</a></li>
-                        <?php endif;?>
-                        <?php if($this->user):?>
-                        <li> <?php $this->user->usuario ?></li>
-                        <li><a href= <?= BASE_URL . 'logout' ?>>Cerrar sesion</a></li>
-                        <?php endif;?>
+                    
+                        <?php if($this->user && $this->user->rol == 'none'):?>
+                        <li><a href= "<?= BASE_URL . 'log' ?>">Iniciar sesion</a></li>
+                        <?php endif ?>
+
+                        <?php if($this->user && $this->user->rol == 'admin'):?>
+                        <li> <?= $this->user->usuario ?></li>
+                        <li><a href= "<?= BASE_URL . 'logout' ?>" >Cerrar sesion</a></li>
+                        <?php endif ?>
                     </ul>
                 </div>
             </div>

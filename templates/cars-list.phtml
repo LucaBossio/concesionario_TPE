@@ -2,7 +2,9 @@
 <ul>
     <?php foreach($cars as $car): ?>
         <li><?= $car->marca ?> Modelo <?= $car->modelo ?> Categoria <?= $car->categoria ?> <a href="vehicle/<?= $car->id ?>">Ver mas</a>
-            <a href="delete/<?= $car->id?>" type="button">Eliminar</a>
+            <?php if($this->user && $this->user->rol == 'admin') :?>
+                <a href="delete/<?= $car->id?>" type="button">Eliminar</a>
+            <?php endif ?>
         </li>
     <?php endforeach ?>
 </ul>

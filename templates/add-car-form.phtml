@@ -1,6 +1,6 @@
 <?php require_once './templates/layout/header.phtml'?>
 
-<?php if($this->user) : ?>
+<?php if($this->user && $this->user->rol == 'admin') : ?>
 <form action="add" method="POST">
     <label for="brand">Marca </label>
     <input type="text" name="brand" id="" required>
