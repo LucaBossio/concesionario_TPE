@@ -19,4 +19,8 @@ class CarsView{
     public function showCar($car){
         require_once './templates/vehicle.phtml';
     }
+
+    public function showEditCar($car){
+        require_once './templates/edit-car-form.phtml';
+    }
 }

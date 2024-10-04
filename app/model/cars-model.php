@@ -1,11 +1,14 @@
 <?php
 
+require_once './libs/config.php';
+
 class CarsModel{
-    private $db;
+    protected $db;
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=concesionario;charset=utf8', 'root', '');
+        $this->db = new PDO("mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
+        //$this->deploy();
     }
 
     public function getCars(){
@@ -16,7 +19,15 @@ class CarsModel{
         return $cars;
     }
 
-    public function getCar($id){
+    public function getCar($brand, $model, $year){
+        $query = $this->db->prepare('SELECT * FROM vehiculos WHERE marca = ? && modelo = ? && año = ?');
+        $query->execute([$brand, $model, $year]);
+
+        $car = $query->fetch(PDO::FETCH_OBJ);
+        return $car;
+    }
+
+    public function getCarByID($id){
         $query = $this->db->prepare('SELECT * FROM vehiculos WHERE id = ?');
         $query->execute([$id]);
 
@@ -40,4 +51,19 @@ class CarsModel{
 
 
     }
+
+    public function updateCar($marca,$modelo,$categoria,$anio,$puertas,$hp,$precio,$id){
+        $query = $this->db->prepare("UPDATE vehiculos SET marca = ?, modelo = ?, precio = ?, año = ?, puertas = ?, hp = ?, categoria = ? WHERE id = ?");
+        $query->execute([$marca,$modelo,$precio,$anio,$puertas,$hp,$categoria,$id]);
+    }
+
+    /*private function _deploy() {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if(count($tables) == 0) {
+            $sql =<<<END
+            END;
+            $this->db->query($sql);
+        }
+    }*/
 }

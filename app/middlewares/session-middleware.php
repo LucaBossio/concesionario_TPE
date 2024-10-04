@@ -1,5 +1,5 @@
 <?php
-    function sessionAuthMiddleware($res) {
+    function sessionAuthMiddleware($res, $protectedRoutes = []) {
         session_start();
         if(isset($_SESSION['id'])){
             $res->user = new stdClass();
@@ -7,12 +7,14 @@
             $res->user->usuario = $_SESSION['user'];
             $res->user->rol = $_SESSION['rol'];
             return;
-        }else if($res->user->rol == 'none'){
-            
         }
-        else{
+        
+        $currentAction = !empty($_GET['action']) ? explode("/", $_GET['action'])[0] : 'home';
+    
+        if (in_array($currentAction, $protectedRoutes) && $res->user->rol == 'none') {
+            // Si la ruta es protegida y no hay sesión, redirigimos al login
             header('Location: ' . BASE_URL . 'log');
             die();
-
         }
+        
     }

@@ -1,9 +1,10 @@
 
 <ul>
     <?php foreach($cars as $car): ?>
-        <li><?= $car->marca ?> Modelo <?= $car->modelo ?> Categoria <?= $car->categoria ?> <a href="vehicle/<?= $car->id ?>">Ver mas</a>
+        <li><?= htmlspecialchars($car->marca) ?> Modelo <?= htmlspecialchars($car->modelo) ?> Categoria <?= htmlspecialchars($car->categoria) ?> <a href="vehicle/<?= $car->marca ?>-<?= $car->modelo ?>-<?= $car->año ?>">Ver mas</a>
             <?php if($this->user && $this->user->rol == 'admin') :?>
                 <a href="delete/<?= $car->id?>" type="button">Eliminar</a>
+                <a href="edit/<?= $car->id ?>" type="button">Editar</a>
             <?php endif ?>
         </li>
     <?php endforeach ?>

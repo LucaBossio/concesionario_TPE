@@ -14,27 +14,39 @@ if (!empty($_GET['action'])) {
     $action = 'home';
 }
 
+$protectedRoutes = ['add', 'delete','update','edit'];
+
 $params = explode("/", $action);
 switch($params[0]){
     case 'home':
-        sessionAuthMiddleware($res);
+        sessionAuthMiddleware($res, $protectedRoutes);
         $controller = new CarsController($res);
         $controller->showCars();
     break;
     case 'vehicle':
-        sessionAuthMiddleware($res);
+        sessionAuthMiddleware($res, $protectedRoutes);
         $controller = new CarsController($res);
         $controller->showCar($params[1]);
     break;
     case 'add':
-        sessionAuthMiddleware($res);
+        sessionAuthMiddleware($res, $protectedRoutes);
         $controller = new CarsController($res);
         $controller->addCar();
     break;
     case 'delete':
-        sessionAuthMiddleware($res);
+        sessionAuthMiddleware($res, $protectedRoutes);
         $controller = new CarsController($res);
         $controller->deleteCar($params[1]);
+    break;
+    case 'edit':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new CarsController($res);
+        $controller->editCar($params[1]);
+    break;
+    case 'update':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new CarsController($res);
+        $controller->updateCar($params[1]);
     break;
     case 'log':
         $controller = new AuthController();

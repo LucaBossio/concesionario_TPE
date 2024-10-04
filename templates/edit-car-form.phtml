@@ -1,7 +1,15 @@
 <?php require_once './templates/layout/header.phtml'?>
-
-<?php if($this->user && $this->user->rol == 'admin') : ?>
-<form action="add" method="POST">
+<h2> <?= $car->marca ?></h2>
+<h3> <?= $car->modelo ?></h3>
+<h3> <?= $car->precio ?></h3>
+<ul>
+    <li><?= $car->año ?></li>
+    <li><?= $car->puertas ?></li>
+    <li><?= $car->hp ?></li>
+    <li><?= $car->categoria ?></li>
+    
+</ul>
+<form action="<?= BASE_URL ?>update/<?= $car->id?>" method="POST">
     <label for="brand">Marca </label>
     <input type="text" name="brand" id="" required>
     <label for="model">Modelo </label>
@@ -20,5 +28,4 @@
     <input type="number" name="car-price" id="" required>
     <button type="submit">Aceptar</button>
 </form>
-
-<?php endif ?>
+<?php require_once './templates/layout/footer.phtml'?>
