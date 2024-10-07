@@ -1,7 +1,11 @@
 <?php
 
 class CarsView{
-    private $user = null;
+    public $user = null;
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
     public function showCars($cars){
         $count = count($cars);
         require_once './templates/add-car-form.phtml';
@@ -14,5 +18,9 @@ class CarsView{
 
     public function showCar($car){
         require_once './templates/vehicle.phtml';
+    }
+
+    public function showEditCar($car){
+        require_once './templates/edit-car-form.phtml';
     }
 }
