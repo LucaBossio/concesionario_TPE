@@ -1,0 +1,15 @@
+<?php require_once './templates/layout/header.phtml'?>
+
+ <?php //if($this->user && $this->user->rol == 'admin') : ?>
+
+<form action= "<?=$destiny?>" method="POST">
+    <label for="name">Nombre </label>
+    <input type="text" name="name" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->nombre?><?php endif?>" required>
+    <label for="company">Empresa </label>
+    <input type="text" name="company" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->empresa?><?php endif?>" required> 
+    <label for="phone">Telefono </label>
+    <input type="tel" name="phone" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->telefono?><?php endif?>" required>   
+    <button type="submit">Aceptar</button>
+</form>
+
+<?php //endif ?>

@@ -14,6 +14,8 @@ class CarsController{
         $this->view = new CarsView($res->user);
     }
 
+
+
     public function showCars(){
         $cars = $this->model->getCars();
 
@@ -36,6 +38,15 @@ class CarsController{
         }
 
         $this->view->showCar($car);
+    }
+
+    public function showCarsDistributor($distributor_id){
+        $cars = $this->model->getCarsEspesificados('id_distribuidor', $distributor_id);
+
+        if(!$cars){
+            $this->view->showError("No existen vehiculos");
+        }
+        $this->view->showCars($cars);
     }
 
     public function addCar(){

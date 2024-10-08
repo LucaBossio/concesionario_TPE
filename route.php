@@ -2,6 +2,7 @@
 require_once './libs/response.php';
 require_once './app/controller/cars-controller.php';
 require_once './app/controller/auth-controller.php';
+require_once './app/controller/distributor-controller.php';
 require_once './app/middlewares/session-middleware.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -59,6 +60,33 @@ switch($params[0]){
     case 'logout':
         $controller = new AuthController();
         $controller->logout();
+    break;
+    case 'distributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController();
+        $controller->showDistributors();
+    break;
+    case'BusquedaVehiculo':
+        $controller = new CarsController($res);
+        $controller->showCarsDistributor($params[1]);
+    case 'addFormDistributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController();
+        $controller->showformDistributor();
+    case'addDistributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController();
+        $controller->addDistributor();
+    break;
+    case 'editDistributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController();
+        $controller->showformDistributor($params[1]);
+        break;
+    case 'updateDistributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController();
+        $controller->updateDistributor($params[1]);
     break;
     default:
         $controller = new CarsController($res);

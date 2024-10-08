@@ -14,22 +14,27 @@ class DistributorModel{
         return $distributors;
     }
 
-    public function getDistributor($id){
+    public function getDistributorByID($id){
         $query = $this->db->prepare('SELECT * FROM `distribuidor` WHERE id = ?'); 
-        $query->execute($id);
-        $distributors = $query->fetchAll(PDO::FETCH_OBJ);
+        $query->execute([$id]);
+        $distributors = $query->fetch(PDO::FETCH_OBJ);
         return $distributors;
     }
 
 
     public function setDistributor($nombre, $telefono, $empresa){
         $query=$this->db->prepare('INSERT INTO `distribuidor`(`nombre`, `telefono`, `empresa`) VALUES (?,?,?)');
-        $query->execuet($nombre, $telefono, $empresa);
+        $query->execute([$nombre, $telefono, $empresa]);
+    }
+
+    public function updateDistributor($nombre, $telefono, $empresa, $id){	
+        $query=$this->db->prepare('UPDATE `distribuidor` SET nombre = ?, telefono = ?, empresa = ? WHERE id = ?');
+        $query->execute([$nombre, $telefono, $empresa, $id]);
     }
 
     public function deleteDistributor(){
         $query = $this->db->prepare('DELETE FROM `distribuidor` WHERE id = ?'); 
-        $query->execute($id);
+        $query->execute([$id]);
     }
 
 }
