@@ -22,17 +22,17 @@ class DistributorModel{
     }
 
 
-    public function setDistributor($nombre, $telefono, $empresa){
-        $query=$this->db->prepare('INSERT INTO `distribuidor`(`nombre`, `telefono`, `empresa`) VALUES (?,?,?)');
-        $query->execute([$nombre, $telefono, $empresa]);
+    public function setDistributor($nombre, $telefono, $empresa, $img){
+        $query=$this->db->prepare('INSERT INTO `distribuidor`(`nombre`, `telefono`, `empresa`, `img`) VALUES (?,?,?,?)');
+        $query->execute([$nombre, $telefono, $empresa, $img]);
     }
 
-    public function updateDistributor($nombre, $telefono, $empresa, $id){	
-        $query=$this->db->prepare('UPDATE `distribuidor` SET nombre = ?, telefono = ?, empresa = ? WHERE id = ?');
-        $query->execute([$nombre, $telefono, $empresa, $id]);
+    public function updateDistributor($nombre, $telefono, $empresa, $img, $id){	
+        $query=$this->db->prepare('UPDATE `distribuidor` SET nombre = ?, telefono = ?, empresa = ?, img = ? WHERE id = ?');
+        $query->execute([$nombre, $telefono, $empresa, $img, $id]);
     }
 
-    public function deleteDistributor(){
+    public function deleteDistributor($id){
         $query = $this->db->prepare('DELETE FROM `distribuidor` WHERE id = ?'); 
         $query->execute([$id]);
     }

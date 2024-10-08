@@ -1,6 +1,6 @@
 <?php require_once './templates/layout/header.phtml'?>
 
- <?php //if($this->user && $this->user->rol == 'admin') : ?>
+ <?php  if($this->user && $this->user->rol == 'admin') : ?>
 
 <form action= "<?=$destiny?>" method="POST">
     <label for="name">Nombre </label>
@@ -8,8 +8,10 @@
     <label for="company">Empresa </label>
     <input type="text" name="company" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->empresa?><?php endif?>" required> 
     <label for="phone">Telefono </label>
-    <input type="tel" name="phone" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->telefono?><?php endif?>" required>   
+    <input type="tel" name="phone" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->telefono?><?php endif?>" required>
+    <label for="phone"> <?php if ($distributor!=null):?> <img src="<?=$distributor->img?>" alt="">  <?php else:?><?='Agregar url Imagen'?><?php endif?></label>
+    <input type="text" name="img" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->img?><?php endif?>" required>  
     <button type="submit">Aceptar</button>
 </form>
 
-<?php //endif ?>
+<?php endif ?>

@@ -22,7 +22,10 @@ switch($params[0]){
     case 'home':
         sessionAuthMiddleware($res, $protectedRoutes);
         $controller = new CarsController($res);
+        $controllerDis = new DistrubutorController($res);
         $controller->showCars();
+        $controllerDis->showformDistributor();
+        $controllerDis->showDistributors();
     break;
     case 'vehicle':
         sessionAuthMiddleware($res, $protectedRoutes);
@@ -63,31 +66,31 @@ switch($params[0]){
     break;
     case 'distributor':
         sessionAuthMiddleware($res, $protectedRoutes);
-        $controller = new DistrubutorController();
-        $controller->showDistributors();
+
     break;
     case'BusquedaVehiculo':
         $controller = new CarsController($res);
         $controller->showCarsDistributor($params[1]);
-    case 'addFormDistributor':
-        sessionAuthMiddleware($res, $protectedRoutes);
-        $controller = new DistrubutorController();
-        $controller->showformDistributor();
+    break;
     case'addDistributor':
         sessionAuthMiddleware($res, $protectedRoutes);
-        $controller = new DistrubutorController();
+        $controller = new DistrubutorController($res);
         $controller->addDistributor();
     break;
     case 'editDistributor':
         sessionAuthMiddleware($res, $protectedRoutes);
-        $controller = new DistrubutorController();
+        $controller = new DistrubutorController($res);
         $controller->showformDistributor($params[1]);
         break;
     case 'updateDistributor':
         sessionAuthMiddleware($res, $protectedRoutes);
-        $controller = new DistrubutorController();
+        $controller = new DistrubutorController($res);
         $controller->updateDistributor($params[1]);
     break;
+    case 'deleteDistributor':
+        sessionAuthMiddleware($res, $protectedRoutes);
+        $controller = new DistrubutorController($res);
+        $controller->deleteDistributor($params[1]);
     default:
         $controller = new CarsController($res);
         $controller->showError('Error 404');

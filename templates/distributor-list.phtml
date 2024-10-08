@@ -2,10 +2,10 @@
     <?php foreach($distributors as $distributor): ?>
 
         <li>Empresa: <?= htmlspecialchars($distributor->empresa) ?> Nombre: <?= htmlspecialchars($distributor->nombre) ?> Telefono <?= htmlspecialchars($distributor->telefono) ?> <a href="BusquedaVehiculo/<?= $distributor->id ?>">Buscar vehiculos</a>
-        <!-- <?php// if($this->user && $this->user->rol == 'admin') :?> -->
-                <a href="delete/<?= $distributor->id?>" type="button">Eliminar</a>
+        <?php if($this->user && $this->user->rol == 'admin') :?> 
+                <a href="deleteDistributor/<?= $distributor->id?>" type="button">Eliminar</a>
                 <a href="editDistributor/<?= $distributor->id ?>" type="button">Editar</a>
-            <?php// endif ?>
+            <?php endif ?>
         </li>
     <?php endforeach ?>
 </ul>
