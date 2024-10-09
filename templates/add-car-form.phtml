@@ -1,21 +1,25 @@
 <?php require_once './templates/layout/header.phtml'?>
 
 <?php if($this->user && $this->user->rol == 'admin') : ?>
-<form action="add" method="POST">
+<form action="<?= $destiny ?>" method="POST">
     <label for="brand">Marca </label>
-    <input type="text" name="brand" id="" required>
+    <input type="text" name="brand" id="" value ="<?php if ($car!=null):?> <?=$car->marca?><?php endif?>" required>
     <label for="model">Modelo </label>
-    <input type="text" name="model" id="" required >
+    <input type="text" name="model" id="" value ="<?php if ($car!=null):?> <?=$car->modelo?><?php endif?>" required >
     <label for="categories">Categoria </label>
-    <input type="text" name="categories" id="" required>
+    <input type="text" name="categories" id="" value ="<?php if ($car!=null):?> <?=$car->categoria?><?php endif?>" required>
     <label for="year">Año </label>
-    <input type="number" name="year" id="" required>
+    <input type="number" name="year" id="" value ="<?php if ($car!=null):?> <?=$car->año?><?php endif?>" required>
     <label for="doors">Puertas </label>
-    <input type="number" name="doors" id="" required>
+    <input type="number" name="doors" id="" value ="<?php if ($car!=null):?> <?=$car->puertas?><?php endif?>" required>
     <label for="power">HP </label>
-    <input type="number" name="power" id="" required>
+    <input type="number" name="power" id="" value ="<?php if ($car!=null):?> <?=$car->hp?><?php endif?>" required>
     <label for="ditribuitor">Distribuidor </label>
-    <select name="distribuitor" id=""></select>
+    <select name="distribuitor" id="">
+        <?php foreach($distribuitors as $distribuitor): ?>
+            <option value="<?= $distribuitor->id ?>"><?= $distribuitor->nombre ?></option>
+        <?php endforeach ?>
+    </select>
     <label for="car-price">Precio </label>
     <input type="number" name="car-price" id="" required>
     <button type="submit">Aceptar</button>

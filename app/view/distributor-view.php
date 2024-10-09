@@ -17,6 +17,10 @@ class DistrubutorView{
         require_once './templates/distributor-form.phtml';
     }
 
+    public function showError($error){
+        require_once './templates/error.phtml';
+    }
+
 
 
 
