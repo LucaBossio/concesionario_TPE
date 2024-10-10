@@ -1,14 +1,15 @@
 <?php
-
 require_once './libs/config.php';
+require_once './libs/deploy.php';
 
 class CarsModel{
     protected $db;
 
     public function __construct()
     {
+        $deploy = new Deploy();
         $this->db = new PDO("mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
-        //$this->deploy();
+
     }
 
     public function getCars($where=1){
@@ -64,13 +65,5 @@ class CarsModel{
         $query->execute([$marca,$modelo,$precio,$anio,$puertas,$hp,$categoria,$id]);
     }
 
-    /*private function _deploy() {
-        $query = $this->db->query('SHOW TABLES');
-        $tables = $query->fetchAll();
-        if(count($tables) == 0) {
-            $sql =<<<END
-            END;
-            $this->db->query($sql);
-        }
-    }*/
+
 }

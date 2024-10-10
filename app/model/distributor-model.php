@@ -1,10 +1,15 @@
 <?php
+require_once './libs/config.php';
+require_once './libs/deploy.php';
+
 class DistributorModel{
 
     private $db;
 
     public function __construct(){
-        $this->db= new PDO('mysql:host=localhost;dbname=concesionario;charset=utf8', 'root', '');
+        $deploy = new Deploy();
+        $this->db= new PDO("mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
+
     }
 
     public function getDistributors(){
