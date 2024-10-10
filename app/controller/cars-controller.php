@@ -41,7 +41,7 @@ class CarsController{
     }
 
     public function showCarsDistributor($distributor_id){
-        $cars = $this->model->getCarsEspesificados('id_distribuidor', $distributor_id);
+        $cars = $this->model->getCarsByDistributor('id_distribuidor', $distributor_id);
 
         if(!$cars){
             $this->view->showError("No existen vehiculos");

@@ -12,15 +12,15 @@ class CarsModel{
 
     }
 
-    public function getCars($where=1){
-        $query = $this->db->prepare('SELECT * FROM vehiculos WHERE ?');
-        $query->execute([$where]);
+    public function getCars(){
+        $query = $this->db->prepare('SELECT * FROM vehiculos');
+        $query->execute();
 
         $cars = $query->fetchAll(PDO::FETCH_OBJ);
         return $cars;
     }
 
-    public function getCarsEspesificados($field, $distributor_id){
+    public function getCarsByDistributor($field, $distributor_id){
         $query = $this->db->prepare("SELECT * FROM vehiculos WHERE $field = ?");
         $query->execute([$distributor_id]);
         $cars = $query->fetchAll(PDO::FETCH_OBJ);
