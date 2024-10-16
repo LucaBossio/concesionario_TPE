@@ -8,6 +8,7 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 $res = new Response();
 
+
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }else{
