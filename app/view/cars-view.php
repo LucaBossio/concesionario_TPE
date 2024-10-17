@@ -6,9 +6,8 @@ class CarsView{
     {
         $this->user = $user;
     }
-    public function showCars($cars){
+    public function showCars($cars ,$distributors){
         $count = count($cars);
-        require_once './templates/add-car-form.phtml';
         require_once './templates/cars-list.phtml';
     }
 
@@ -16,11 +15,19 @@ class CarsView{
         require_once './templates/error.phtml';
     }
 
-    public function showCar($car){
+    public function showCar($car,$distributors){
         require_once './templates/vehicle.phtml';
     }
 
     public function showEditCar($car){
-        require_once './templates/edit-car-form.phtml';
+        require_once './templates/car-form.phtml';
+    }
+
+    public function showHome(){
+        require_once './templates/home.phtml';
+    }
+
+    public function showCarForm($car,$destiny,$distributors){
+        require_once './templates/car-form.phtml';
     }
 }

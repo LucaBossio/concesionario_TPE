@@ -11,28 +11,25 @@
     <link rel="shortcut icon" href="<?= BASE_URL ?>/css/favicon.svg" type="image/x-icon">
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1 class="main-title">Concesionaria</h1>
-
         <nav>
             <div class="nav-bar">
                 <div>
                     <ul>
-                        <li> <a href=<?= BASE_URL ?>>inicio</a></li>
+                        <li> <div class="interactive"><a href=<?= BASE_URL ?>>inicio</a></div></li>
                     </ul>
                 </div>
                 <div>
-                    <ul>
                     
                         <?php if($this->user && $this->user->rol == 'none'):?>
-                        <li><a href= "<?= BASE_URL . 'log' ?>">Iniciar sesion</a></li>
+                        <div class="login-button"><a href= "<?= BASE_URL . 'log' ?>">Iniciar sesion</a></div>
                         <?php endif ?>
 
                         <?php if($this->user && $this->user->rol == 'admin'):?>
-                        <li> <?= $this->user->usuario ?></li>
-                        <li><a href= "<?= BASE_URL . 'logout' ?>" >Cerrar sesion</a></li>
+                        <p>👤 <?= $this->user->usuario ?></p>
+                        <div class="login-button"><a href= "<?= BASE_URL . 'logout' ?>" >Cerrar sesion</a></div>
                         <?php endif ?>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -40,3 +37,4 @@
     </header>
     
     <main>
+        <div class="main-body">

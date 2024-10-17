@@ -9,7 +9,7 @@
             return;
         }
         
-        $currentAction = !empty($_GET['action']) ? explode("/", $_GET['action'])[0] : 'home';
+        $currentAction = !empty($_GET['action']) ? explode("/", $_GET['action'])[1] : 'home';
     
         if (in_array($currentAction, $protectedRoutes) && $res->user->rol == 'none') {
             // Si la ruta es protegida y no hay sesión, redirigimos al login

@@ -1,0 +1,22 @@
+<?php require_once './templates/layout/header.phtml'?>
+ <?php  if($this->user && $this->user->rol == 'admin') : ?>
+<div class="form-container">
+    <h2>
+        Cargar distribuidor
+    </h2>
+    <form action= "<?=$destiny?>" method="POST">
+        <label for="name">Nombre </label>
+        <input type="text" name="name" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->nombre?><?php endif?>" required>
+        <label for="company">Empresa </label>
+        <input type="text" name="company" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->empresa?><?php endif?>" required> 
+        <label for="phone">Telefono </label>
+        <input type="tel" name="phone" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->telefono?><?php endif?>" required>
+        <label for="img">Url de la imagen</label>
+        <input type="text" name="img" id="" value ="<?php if ($distributor!=null):?> <?=$distributor->img?><?php endif?>" required>  
+        <button type="submit">Aceptar</button>
+    </form>
+</div>
+
+
+<?php endif ?>
+<?php require_once './templates/layout/footer.phtml'?>

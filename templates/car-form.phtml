@@ -1,0 +1,38 @@
+<?php require_once './templates/layout/header.phtml'?>
+<?php if($this->user && $this->user->rol == 'admin') : ?>
+<div class="form-container">
+    <h2>
+        Cargar vehiculo
+    </h2>
+    <form action="<?= $destiny ?>" method="POST">
+        <label for="brand">Marca </label>
+        <input type="text" name="brand" id="" value="<?php if($car!=null):?><?=$car->marca?><?php endif ?>" required>
+        <label for="model">Modelo </label>
+        <input type="text" name="model" id="" value="<?php if($car!=null):?><?=$car->modelo?><?php endif ?>" required >
+        <label for="categories">Categoria </label>
+        <input type="text" name="categories" id="" value ="<?php if($car!=null):?> <?=$car->categoria?><?php endif ?>" required>
+        <label for="year">Año </label>
+        <input type="number" name="year" id="" value="<?php if($car!=null):?><?=$car->año?><?php endif ?>" required>
+        <label for="doors">Puertas </label>
+        <input type="number" name="doors" id="" value="<?php if($car!=null):?><?=$car->puertas?><?php endif ?>" required>
+        <label for="power">HP </label>
+        <input type="number" name="power" id="" value="<?php if($car!=null):?><?=$car->hp?><?php endif ?>" required>
+        <label for="image">Url de imagen</label>
+        <input type="text" name="image" id="" value="<?php if($car!=null):?><?=$car->img?><?php endif ?>"required>
+        <label for="ditributor">Distribuidor </label>
+        <select name="distributor" id="">
+            <option value="" selected disabled>-</option>
+            <?php foreach($distributors as $distributor): ?>
+                <option value="<?= $distributor->id ?>"><?= $distributor->nombre ?></option>
+            <?php endforeach ?>
+        </select>
+        <label for="car-price">Precio </label>
+        <input type="number" name="car-price" id="" value="<?php if($car!=null):?><?=$car->precio?><?php endif ?>" required>
+        <button type="submit">Aceptar</button>
+    </form>
+</div>
+
+
+<?php endif ?>
+
+<?php require_once './templates/layout/footer.phtml'?>

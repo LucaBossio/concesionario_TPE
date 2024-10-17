@@ -1,14 +1,26 @@
 <?php require_once './templates/layout/header.phtml'?>
-<h2> <?= $car->marca ?></h2>
-<h3> <?= $car->modelo ?></h3>
-<h3> <?= $car->precio ?></h3>
-<ul>
-    <li><?= $car->año ?></li>
-    <li><?= $car->puertas ?></li>
-    <li><?= $car->hp ?></li>
-    <li><?= $car->categoria ?></li>
+<div class="vehicle-card">
+    <div class="vehicle-image">
+        <img src="<?=$car->img?>" alt="">
+    </div>
+    <div class="vehicle-info">
+        <h2> <?= $car->marca ?></h2>
+        <h3> <?= $car->modelo ?></h3>
+        <h3> $<?= $car->precio ?></h3>
+        <ul>
+            <li>Año: <?= $car->año ?></li>
+            <li>Puertas: <?= $car->puertas ?></li>
+            <li>HP: <?= $car->hp ?></li>
+            <li>Categoria: <?= $car->categoria ?></li>
+        </ul>
+            <?php foreach($distributors as $distributor): ?>
+                <?php if($distributor->id == $car->id_distribuidor): ?>
+                    <h3>Distribuido por: <div class="vehicle-distributor-image"><img src="<?= $distributor->img ?>" alt=""></div><?= $distributor->nombre ?></h3>
+                <?php endif ?>
+            <?php endforeach ?>
+        
+        <div class="back-button interactive"><a href= "<?= BASE_URL ?>vehicles/list">Volver</a></div>
+    </div> 
     
-</ul>
-
-<a href= <?= BASE_URL ?>>Volver</a>
+</div>
 <?php require_once './templates/layout/footer.phtml'?>

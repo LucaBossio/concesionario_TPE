@@ -1,6 +1,7 @@
 <?php require_once './templates/layout/header.phtml'?>
-<div>
-    <?= $error ?>
+<div class="error">
+    <h3 class="bold"><?= $error ?></h3>
+    <div class="back-button interactive bold"><a href= <?= BASE_URL ?>>Volver</a></div>
 </div>
-<a href= <?= BASE_URL ?>>Volver</a>
+
 <?php require_once './templates/layout/footer.phtml'?>

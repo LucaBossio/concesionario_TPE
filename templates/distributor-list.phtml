@@ -1,0 +1,21 @@
+<?php require_once './templates/layout/header.phtml'?>
+<div class="list-container">
+    <ul>
+        <?php foreach($distributors as $distributor): ?>
+
+            <li>
+            <span class="bold">Empresa:</span> <?= htmlspecialchars($distributor->empresa) ?> 
+            <span class="bold">Nombre: </span><?= htmlspecialchars($distributor->nombre) ?> 
+            <span class="bold">Telefono: </span><?= htmlspecialchars($distributor->telefono) ?>
+            <div class="list-button-container">
+                <div class="list-button interactive"><a href="vehicles/<?= $distributor->id ?>">Buscar vehiculos</a></div>
+                <?php if($this->user && $this->user->rol == 'admin') :?> 
+                    <div class="list-button interactive"><a href="delete/<?= $distributor->id?>" type="button">Eliminar</a></div>
+                    <div class="list-button interactive"><a href="edit/<?= $distributor->id ?>" type="button">Editar</a></div>
+                <?php endif ?>
+            </div>
+            
+            </li>
+        <?php endforeach ?>
+    </ul>
+</div>

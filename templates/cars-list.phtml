@@ -1,12 +1,25 @@
-
-<ul>
-    <?php foreach($cars as $car): ?>
-        <li><?= htmlspecialchars($car->marca) ?> Modelo <?= htmlspecialchars($car->modelo) ?> Categoria <?= htmlspecialchars($car->categoria) ?> <a href="vehicle/<?= $car->marca ?>-<?= $car->modelo ?>-<?= $car->año ?>">Ver mas</a>
-            <?php if($this->user && $this->user->rol == 'admin') :?>
-                <a href="delete/<?= $car->id?>" type="button">Eliminar</a>
-                <a href="edit/<?= $car->id ?>" type="button">Editar</a>
-            <?php endif ?>
-        </li>
-    <?php endforeach ?>
-</ul>
-<?php require_once './templates/layout/footer.phtml'?>
+<?php require_once './templates/layout/header.phtml'?>
+<div class="list-container">
+    <ul>
+        <?php foreach($cars as $car): ?>
+            <li><?= htmlspecialchars($car->marca) ?> 
+            <span class="bold">Modelo</span> <?= htmlspecialchars($car->modelo) ?> 
+            <span class="bold">Categoria</span> <?= htmlspecialchars($car->categoria) ?>
+            <span class="bold">Distribuidor</span> 
+            <?php foreach($distributors as $distributor): ?>
+                <?php if($distributor->id == $car->id_distribuidor): ?>
+                    <?= $distributor->nombre ?>
+                <?php endif ?>
+            <?php endforeach ?>
+            <div class="list-button-container">
+                <div class="list-button interactive"><a href="<?= BASE_URL?>vehicles/vehicle/<?= $car->id ?>">Ver mas</a></div>
+                <?php if($this->user && $this->user->rol == 'admin') :?>
+                    <div class="list-button interactive"><a href="delete/<?= $car->id?>" type="button">Eliminar</a></div>
+                    <div class="list-button interactive"><a href="edit/<?= $car->id ?>" type="button">Editar</a></div>
+                <?php endif ?>
+            </div>
+            
+            </li>
+        <?php endforeach ?>
+    </ul>
+</div>
