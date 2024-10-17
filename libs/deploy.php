@@ -26,7 +26,7 @@ class Deploy{
         $query = $this->db->query('SHOW TABLES');
         $tables = $query->fetchAll();
         if(count($tables) == 0) {
-            $sql = file_get_contents('./db/concesionario.sql');
+            $sql = file_get_contents('./db/concesionario_marcosyluca.sql');
             $this->db->query($sql);
         }
     }
